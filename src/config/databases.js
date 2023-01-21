@@ -8,8 +8,9 @@ let db;
 
 try {
   await mongoClient.connect();
+  db = mongoClient.db();
 } catch (err) {
   console.log("Erro no mongo.conect", err.message);
 }
 
-db = mongoClient.db("DIRETORIOOOO");
+export default db;
