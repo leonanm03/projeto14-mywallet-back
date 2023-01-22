@@ -13,7 +13,7 @@ import changeSchema from "../schemas/changeSchema.js";
 const walletRouter = Router();
 
 walletRouter.use(authValidation);
-walletRouter.get("/wallet", validateSchema(changeSchema), getWallet);
-walletRouter.post("/wallet", addChangeWallet);
+walletRouter.get("/wallet", getWallet);
+walletRouter.post("/wallet", validateSchema(changeSchema), addChangeWallet);
 
 export default walletRouter;
