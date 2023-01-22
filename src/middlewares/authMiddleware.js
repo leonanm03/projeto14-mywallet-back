@@ -9,7 +9,7 @@ export async function authValidation(req, res, next) {
   try {
     const session = await sessionsCollection.findOne({ token });
 
-    console.log(session);
+    console.log("sessão: ", session);
 
     if (!session)
       return res.status(401).send("Token is invalid or has expired");

@@ -1,10 +1,19 @@
 import { Router } from "express";
-import { getWallet } from "../controllers/wallet.js";
+
+// Controllers
+import { addChangeWallet, getWallet } from "../controllers/wallet.js";
+
+// Middlewares
 import { authValidation } from "../middlewares/authMiddleware.js";
+
+// Schemas
+import { validateSchema } from "../middlewares/validadeSchema.js";
+import changeSchema from "../schemas/changeSchema.js";
 
 const walletRouter = Router();
 
 walletRouter.use(authValidation);
-walletRouter.get("/wallets", getWallet);
+walletRouter.get("/wallet", validateSchema(changeSchema), getWallet);
+walletRouter.post("/wallet", addChangeWallet);
 
 export default walletRouter;
